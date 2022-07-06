@@ -1,3 +1,19 @@
+let titulo = document.querySelector(".titulo");
+titulo.addEventListener("click", mostrarMensaje);
+
+function mostrarMensaje(){
+    console.log("usted hizo clic en el titulo");
+}
+
+let agregar = document.querySelector(".bto-principal");
+agregar.addEventListener("click", agregarDatos);
+
+function agregarDatos(){
+    console.log("mentidita");
+}
+
+
+
 let pacientes = document.querySelectorAll(".paciente");
 
 for (let i = 0; i < pacientes.length; i++) {
