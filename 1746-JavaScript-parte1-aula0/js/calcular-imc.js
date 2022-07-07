@@ -36,7 +36,7 @@ for (let i = 0; i < pacientes.length; i++) {
   //falaso Y falso --> falso
   if (pesoEsValido && alturaEsValido) {
     let imc = peso / (altura * altura);
-    tdIMC.textContent = imc.toFixed(2);
+    tdIMC.textContent = calcularIMC(peso, altura);
   } else {
     tdIMC.textContent = "dato incorrecto";
   }
@@ -50,3 +50,8 @@ for (let i = 0; i < pacientes.length; i++) {
 
 //imc = peso/ altura * altura
 //console.log(imc);
+
+function calcularIMC(peso, altura){
+  let imc = peso / (altura * altura);
+  return imc.toFixed(2)
+}
