@@ -12,11 +12,11 @@ for (let i = 0; i < pacientes.length; i++) {
   let imc = peso / (altura * altura);
   tdIMC.textContent = imc;
 
-  let pesoEsValido = true;
-  let alturaEsValido = true;
+  let pesoEsValido = validarPeso(peso);
+  //let pesoEsValido =true;
+  let alturaEsValido = validarAltura(altura);
 
-  //verdadero o falso --> verdadero
-  if (peso <= 0 || peso >= 1000) {
+  if (!pesoEsValido) {
     console.log("Peso Incorrecto");
     tdPeso.textContent = "Peso incorrecto";
     paciente.classList.add("paciente-incorrecto");
@@ -24,16 +24,13 @@ for (let i = 0; i < pacientes.length; i++) {
   }
 
   //verdadero o falso --> verdadero
-  if (altura <= 0 || altura >= 3.0) {
+  if (!alturaEsValido) {
     console.log("Altura Incorrecto");
-    tdAltura.textContent = "altura incorrecta";
+    tdAltura.textContent = "Altura incorrecta";
     paciente.classList.add("paciente-incorrecto");    
     alturaEsValido = false;
   }
 
-  //verdadero y verdadero --> verdadero
-  //verdadero Y falso --> falso
-  //falaso Y falso --> falso
   if (pesoEsValido && alturaEsValido) {
     let imc = peso / (altura * altura);
     tdIMC.textContent = calcularIMC(peso, altura);
@@ -42,16 +39,25 @@ for (let i = 0; i < pacientes.length; i++) {
   }
 }
 
-//console.log(paciente);
-//console.log(tdPeso);
-//console.log(peso);
-//console.log(tdAltura);
-//console.log(altura);
-
-//imc = peso/ altura * altura
-//console.log(imc);
-
 function calcularIMC(peso, altura){
   let imc = peso / (altura * altura);
   return imc.toFixed(2)
+}
+
+function validarPeso(peso){
+  return peso >= 0 && peso < 1000;
+  // if(peso >= 0 && peso < 1000){
+  //   return true;
+  // }else{
+  //   return false;
+  // }
+}
+
+function validarAltura(altura){
+  return altura >= 0 && altura < 3.00;
+  // if(altura >= 0 && altura < 3.00){
+  //   return true;
+  // }else{
+  //   return false;
+  // }
 }
